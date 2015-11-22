@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="diagonals.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="miller_rabin.cpp" />
     <ClCompile Include="timer\bench_timer.cpp" />
   </ItemGroup>
   <ItemGroup>

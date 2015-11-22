@@ -5,23 +5,20 @@
 namespace millerrabin
 {
 
-	// http://www.analyticsengines.com/developer_blog/64-bit-modular-exponentiation-in-fortran/
-	// Will have trouble with overflow
+	// https://en.wikipedia.org/wiki/Modular_exponentiation
 	template<typename Integer>
-	Integer mod_power(Integer base, Integer ex, Integer mod)
+	Integer mod_power_wiki(Integer base, Integer exponent, Integer modulus)
 	{
-		Integer res{ 1 };
-		Integer base_t = base%mod;
-		while(ex>0) {
-			if(ex&1) {
-				res = res*base_t;
-				res = res%mod;
-			}
-			ex >>= 1;
-			base_t = base_t*base_t;
-			base_t = base_t%mod;
+		if (modulus == 1) return Integer(0);
+		// assert ((modulus-1)*(modulus-1)) not overflow
+		Integer result(1);
+		base = base%modulus;
+		while (exponent > 0) {
+			if (exponent & 1) result = (result*base) % modulus;
+			exponent >>= Integer(1);
+			base = (base*base) % modulus;
 		}
-		return res%mod;
+		return result;
 	}
 
 	template<typename Integer>
@@ -40,6 +37,10 @@ namespace millerrabin
 		}
 		return now;
 	}
+
+	// Wikipedia algo
+	uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t mod);
+
 	// Slow modular power, less prone to overflow?!
 	template<typename Integer>
 	Integer pow(Integer a, Integer p, Integer mod)
@@ -61,10 +62,10 @@ namespace millerrabin
 		int i, j;
 		for (i = 0;i < list_to_check.size();++i) {
 			Integer a = std::min(prime_to_check - 2, list_to_check[i]);
-			Integer now = mod_power(a, ndec, prime_to_check);
+			Integer now = mod_power_wiki(a, ndec, prime_to_check);
 			if (now == 1 || now == (prime_to_check-1)) continue;
 			for (j = 1;j < s;++j) {
-				now = mul(now, now, prime_to_check);
+				now = mul_mod(now, now, prime_to_check);
 				if (now == (prime_to_check-1)) break;
 			}
 			if (j == s) return false;
