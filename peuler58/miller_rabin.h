@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-// http://stackoverflow.com/questions/4236673/sample-code-for-fast-primality-testing-in-c-sharp/4236870#4236870
+// http://stackoverflow.com/questions/4236673/sample-code-for-fast-primality-testing-in-c-sharp/4236870#4236870 <--- slow.
 namespace millerrabin
 {
 	template<typename Integer>
@@ -51,6 +51,9 @@ namespace millerrabin
 		return mul(pow(a, p - 1, mod), a, mod);
 	}
 
+
+	// http://www.analyticsengines.com/developer_blog/64-bit-modular-exponentiation-in-fortran/
+	// Will have trouble with overflow
 	template<typename Integer>
 	Integer mod_power(Integer base, Integer ex, Integer mod)
 	{
