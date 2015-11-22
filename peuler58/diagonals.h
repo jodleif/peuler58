@@ -15,20 +15,5 @@ namespace peuler58
 	}
 
 	uint_fast32_t find_sidelength();
-	class diagonals
-	{
-		uint32_t last;
-		std::size_t primes;
-		double diag_count;
-
-		void first_layer();
-		double ratio(std::size_t primes, double total) const;
-	public:
-		diagonals();
-		~diagonals();
-
-		bool next_layer(uint_fast32_t layer);
-		uint_fast32_t side_length_when_cond();
-	};
 }
 

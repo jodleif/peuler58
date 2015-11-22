@@ -29,9 +29,6 @@
     <ClInclude Include="diagonals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sieve.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="miller_rabin.h">
       <Filter>Header Files</Filter>
     </ClInclude>

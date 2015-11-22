@@ -153,7 +153,6 @@
   <ItemGroup>
     <ClInclude Include="diagonals.h" />
     <ClInclude Include="miller_rabin.h" />
-    <ClInclude Include="sieve.h" />
     <ClInclude Include="timer\bench_timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
