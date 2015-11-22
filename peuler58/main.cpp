@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits>
 #include "diagonals.h"
 #include "timer/bench_timer.h"
 int main()
