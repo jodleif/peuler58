@@ -16,7 +16,7 @@ namespace millerrabin
 		int i, j;
 		for (i = 0;i < list_to_check.size();++i) {
 			Integer a = std::min(prime_to_check - 2, list_to_check[i]);
-			Integer now = pow(a, ndec, prime_to_check);
+			Integer now = mod_power(a, ndec, prime_to_check);
 			if (now == 1 || now == (prime_to_check-1)) continue;
 			for (j = 1;j < s;++j) {
 				now = mul(now, now, prime_to_check);
@@ -49,6 +49,23 @@ namespace millerrabin
 		if (p == 0) return 1;
 		if (!(p&1)) return pow(mul(a, a, mod), p / 2, mod);
 		return mul(pow(a, p - 1, mod), a, mod);
+	}
+
+	template<typename Integer>
+	Integer mod_power(Integer base, Integer ex, Integer mod)
+	{
+		Integer res{ 1 };
+		Integer base_t = base%mod;
+		while(ex>0) {
+			if(ex&1) {
+				res = res*base_t;
+				res = res%mod;
+			}
+			ex >>= 1;
+			base_t = base_t*base_t;
+			base_t = base_t%mod;
+		}
+		return res%mod;
 	}
 	/*
 	template<typename Integer, typename Int>

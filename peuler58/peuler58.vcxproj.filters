@@ -21,6 +21,9 @@
     <ClCompile Include="diagonals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="timer\bench_timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="diagonals.h">
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="miller_rabin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timer\bench_timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
